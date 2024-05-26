@@ -1,0 +1,13 @@
+.cartsdiv{
+display: flex;
+flex-direction: column;
+width: 550px;
+gap:15px ;
+
+}
+.c{
+ display: flex;
+ justify-content:space-between ;
+
+
+}

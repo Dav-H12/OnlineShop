@@ -1,0 +1,35 @@
+.prod{
+width: 260px;
+border: 1px solid black;
+height: 320px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+padding: 12px;
+}
+
+.nkar{
+
+width: 120px;
+
+
+}
+
+.product > h3{
+    text-align: center;
+}
+
+
+.addtoCardBtn{
+width: 70%;
+height: 35px;
+background-color:skyblue ;
+border: none;
+border-radius: 16px;
+font-size: 18px;
+font-weight: 700;
+cursor: pointer;
+}
+
+

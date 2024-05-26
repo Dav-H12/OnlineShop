@@ -1,0 +1,33 @@
+form{
+width:550px ;
+padding: 8px;
+border: 1px solid black;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 7px;
+}
+
+form>input{
+width: 90%;
+padding:6px;
+border-radius: 26px;
+}
+
+.buttonOrder{
+
+    width: 90%;
+    padding:6px;
+    
+    border: none;
+    background-color: aqua;
+    font-size: 19px;
+    font-weight:500 ;
+    cursor: pointer;
+}
+
+form>h5{
+color: red;
+margin: 0;
+padding: 0;
+}
