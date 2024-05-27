@@ -5,3 +5,8 @@ align-items: center;
 gap: 10px;
 flex-wrap: wrap;
 }
+
+.a{
+background-color: red;
+
+}

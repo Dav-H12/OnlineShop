@@ -9,11 +9,36 @@ import Productpage from "./pages/Productpage/Productpage";
 import Carts from "./pages/Carts/Carts";
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
+import Register from "./pages/Register/Register";
 
+function App({ products, users }) {
+ const [cart, setCart] = useState([]);
+  const [users, setUsers] = useState([
+    {
+      id: Date.now(),
+      name: "Ashot",
+      login: "admin",
+      lastName: "Xazaryan",
+      email: "cgitem@email.ru",
+      phone: "432525252",
+      role: "admin",
+      password: "1234",
+    },
+  ]);
 
-function App({ products,users }) {
-  const [cart, setCart] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
+  const addUsers = (values) => {
+    console.log(values);
+
+    setUsers((prev) => {
+      return [...prev, { ...values, id: Date.now() }];
+    });
+  };
+
+  const [user, setuser] = useState(null);
+
+  const authUser = (user) => {
+    setuser(user);
+  };
 
   let allprice = cart.reduce((accum, elem) => accum + elem.initprice, 0);
 
@@ -68,7 +93,10 @@ function App({ products,users }) {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Loyout cart={cart} />}>
+        <Route
+          path="/"
+          element={<Loyout cart={cart} users={users} user={user} />}
+        >
           <Route index element={<Home />} />
           <Route
             path="/products"
@@ -89,8 +117,9 @@ function App({ products,users }) {
               />
             }
           />
-          <Route path="/profile" element={<Profile/>}/>
-          <Route path="/login" element={<Login users={users}/>}/>
+          <Route path="/profile" element={<Profile authUser={authUser} />} />
+          <Route path="/login" element={<Login users={users} />} />
+          <Route path="/register " element={<Register addUsers={addUsers} />} />
         </Route>
       </Routes>
     </div>
