@@ -15,14 +15,15 @@ function Cart({ carti, btnsClicks, removeCartItem }) {
     setCartCount(++cartCount );
     btnsClicks(cartCount,carti.id);
   };
-  const removeItem = (id) => {};
+  
 
   return (
     <>
       <div className="cart">
         <div>
-          <img src={carti.image} />
           <h3>{carti.title}</h3>
+          <img src={carti.image} className="cartimage"/>
+          
         </div>
         <div className="right">
           <span>
@@ -32,7 +33,7 @@ function Cart({ carti, btnsClicks, removeCartItem }) {
           <span>{carti.initprice}</span>
           <button onClick={plus}>+</button>
         </div>
-        <button onClick={() => removeCartItem(cart.id)}>X</button>
+        <button onClick={() => removeCartItem(carti.id)}>X</button>
       </div>
     </>
   );

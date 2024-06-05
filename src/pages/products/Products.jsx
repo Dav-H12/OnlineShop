@@ -1,6 +1,5 @@
 import "./Products.css";
 import Product from "../../components/Product/Product";
-import { isButtonElement } from "react-router-dom/dist/dom";
 import { useState } from "react";
 
 ///chi ashxatum slider@/////
@@ -8,7 +7,7 @@ const Products = ({ produc, addtoCard }) => {
   const [p, setP] = useState(produc.slice(0, 5));
   const [classitem,setClassItem]=useState(0)
   const countItem = 5;
-  const pageCount = produc.lenght / countItem;
+  const pageCount =Math.round(produc.length / countItem);
   const arr = [];
 
   for (let i = 1; i <= pageCount; i++) {
@@ -54,7 +53,7 @@ const Products = ({ produc, addtoCard }) => {
       </div>
       <div>
         {arr.map((p,index) => (
-          <button key={p} onClick={() => paginate(p)} className={p===classitem ? 'a':''}>
+           <button key={p} onClick={() => paginate(p)} className={p===classitem ? 'a':''}>
             {p}
           </button>
         ))}

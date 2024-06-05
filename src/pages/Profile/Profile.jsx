@@ -4,10 +4,11 @@ import { useLocation } from "react-router-dom";
 
 const Profile = (authUser) => {
   const { state } = useLocation;
-useEffect=(()=>{
-    authUser(state)
-},[])
-
+  // useEffect =
+  //   (() => {
+  //     authUser(state);
+  //   },
+  //   []);
 
   return (
     <div>

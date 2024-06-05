@@ -3,12 +3,14 @@ import "./Carts.css";
 import Cart from "../../components/cart/Cart";
 import Orderform from "../../components/Orderform/OrderForm";
 const Carts=({cart,btnsClicks,removeCartItem,allprice})=> {
+  let cartLocal =JSON.parse(localStorage.getItem('cartStore')
+ ) 
   return (
     <div className="c" >
 
 
       <div className="cartsdiv">
-        {cart.lengnt?
+        {cart.length?
         
         cart.map((c) => {
           return <Cart carti={c} key={c.id} btnsClicks={btnsClicks} removeCartItem={removeCartItem}/>;

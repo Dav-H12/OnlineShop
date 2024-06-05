@@ -1,21 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Productpage.css";
 import { useParams } from "react-router-dom";
-
-function Productpage({ product1 }) {
+import { instance } from "../../App";
+function Productpage() {
   const { id } = useParams();
-  let product = product1.filter((elem) => elem.id === +id);
+  const [product ,setProduct] =useState({})
+  // let product = product1.filter((elem) => elem.id === +id);
+  useEffect(()=>{
+     instance.get(`/products/${id}`)
+     .then((res)=>setProduct(res.data))
+  },[])
+
 
   return (
     <div>
-      {
-      product.map((p) => {
-        return (
-          <div key={p.id}>
-            <h2>{p.title}</h2>
-          </div>
-        );
-      })}
+     <h2>{product.title}</h2>
+     <img src={product.image}/>
     </div>
   );
 }

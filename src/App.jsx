@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
+import axios from "axios";
 import Home from "./pages/Home/Home";
 import Products from "./pages/products/Products";
 import Loyout from "./components/Loyout/Loyut";
@@ -11,8 +12,13 @@ import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Register/Register";
 
-function App({ products, users }) {
- const [cart, setCart] = useState([]);
+export const instance = axios.create({
+  baseURL: "https://fakestoreapi.com",
+});
+
+function App({}) {
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
   const [users, setUsers] = useState([
     {
       id: Date.now(),
@@ -25,6 +31,24 @@ function App({ products, users }) {
       password: "1234",
     },
   ]);
+  const storage = useRef(false);
+  useEffect(() => {
+    if(storage.current){
+      localStorage.setItem("cartStore", JSON.stringify(cart));
+    }
+    storage.current =true
+    
+  }, [cart]);
+
+  useEffect(() => {
+    instance.get("/products").then((res) =>
+      setProducts(
+        res.data.map((el) => {
+          return { ...el, initprice: el.price, count: 1 };
+        })
+      )
+    );
+  }, []);
 
   const addUsers = (values) => {
     console.log(values);

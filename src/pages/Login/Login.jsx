@@ -3,20 +3,7 @@ import { Field, Form, Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 const Login = ({ users }) => {
-
-   const navigate =useNavigate()
-
-
-
-
-
-
-
-
-
-
-
-
+  const navigate = useNavigate();
 
   const ValidateLogin = Yup.object().shape({
     login: Yup.string().required("field is Requried"),
@@ -29,7 +16,7 @@ const Login = ({ users }) => {
     );
 
     if (user) {
-      return navigate('/profile',{state :user})
+      return navigate("/profile", { state: user });
     }
   };
 
@@ -41,7 +28,7 @@ const Login = ({ users }) => {
           password: "",
         }}
         validationSchema={ValidateLogin}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => Authorization(values)}
       >
         {() => (
           <Form>
